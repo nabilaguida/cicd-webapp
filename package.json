@@ -10,7 +10,6 @@
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
-
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,5 +21,13 @@
   },
   "devDependencies": {
     "gh-pages": "^1.2.0"
-  }
+  },
+  "description": "This Project is a Simple ReactJS Project which demonstrates the following\r 1. Creating a Component in React\r 2. Making HTTP calls\r 3. Communicating between parent and child component\r 4. Using Bootstrap along with React\r 5. Using Basic Routing in React",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "my_project"
+  },
+  "author": "",
+  "license": "ISC"
 }
