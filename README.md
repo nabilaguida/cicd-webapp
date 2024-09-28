@@ -9,7 +9,7 @@ This Project is a Simple ReactJS Project which demonstrates the following
 4. Using Bootstrap along with React
 5. Using Basic Routing in React
 6.  hello there
-7.  mother father
+7.  mother father .
 
 The project Template can be used to build bigger projects
 
