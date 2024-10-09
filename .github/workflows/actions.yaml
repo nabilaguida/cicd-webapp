@@ -40,7 +40,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
 
           # Step 2: SSH into the remote server and deploy the container
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@your-server-ip << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@16.171.11.110 << 'EOF'
             # Login to Docker on the server
             docker login -u $DOCKERHUB_USERNAME -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
