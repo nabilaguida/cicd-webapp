@@ -24,3 +24,36 @@ jobs:
       - name: push the docker image
         id: push-docker-image
         run: docker push ${{secrets.DOCKERHUB_USERNAME}}/achreftest:latest
+
+
+      - name: Deploy to Remote Server
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        run: |
+          # Create the .ssh directory and set the right permissions
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          # Step 1: Store the SSH key in a file and set the right permissions
+          echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          # Step 2: SSH into the remote server and deploy the container
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ec2-user@your-server-ip << 'EOF'
+            # Login to Docker on the server
+            docker login -u $DOCKERHUB_USERNAME -p ${{ secrets.DOCKERHUB_PASSWORD }}
+
+            # Pull the latest Docker image from Docker Hub
+            docker pull nabilag1401/achreftest:latest
+
+            # Stop and remove any existing container with the same name
+            docker stop achreftest || true
+            docker rm achreftest || true
+
+            # Run the new container
+            docker run -d --name achreftest -p 8000:80 nabilag1401/achreftest:latest
+          EOF
+  
+        
+        
