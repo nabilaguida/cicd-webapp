@@ -14,7 +14,7 @@ class App extends Component {
         <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">pts za3im na9ch we habib za3im bsm allah</h1>
+          <h1 className="App-title">pts za3im we habib za3im bsm allah</h1>
         </header>
           <Switch>
                 <Route exact path= "/" render={() => (
